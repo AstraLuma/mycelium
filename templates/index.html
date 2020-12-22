@@ -34,11 +34,12 @@ a:hover, a:focus { color: #0f437e; }
     {% for hostname, checks in results.items() %}
     <section>
       <h2>{{hostname}}</h2>
-      <ul>
-        {% for item in checks %}
-        <li>{{item}}</li>
+      <dl>
+        {% for cname, res in checks.items() %}
+        <dt>{{cname}}</dt>
+        <dd>{{res}}</dd>
         {% endfor %}
-      </ul>
+      </dl>
     </section>
     {% endfor %}
   </body>
