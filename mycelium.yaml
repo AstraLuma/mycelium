@@ -1,4 +1,6 @@
 - Refuge Uplink:
+  - IPv4: !url https://v4.ident.me/
+  - IPv6: !url https://v6.ident.me/
 
 - Toaster:
   - !ping toaster
@@ -13,10 +15,16 @@
       port: 5000
 
 - Mulholland:
-  - !ping mulholland
+  # - !ping mulholland
   - SSH: !tcp
       host: mulholland
       port: 22
+  - HTTP: !tcp
+      host: mulholland
+      port: 80
+  - HTTPS: !tcp
+      host: mulholland
+      port: 443
 
 # - Petey:
 #   - !ping petey
@@ -66,4 +74,4 @@
 
 - MNN Sites:
   - Site: !url https://mutualnudes.net/
-  - Wiki: !url https//mnn.wiki/
+  - Wiki: !url https://mnn.wiki/
