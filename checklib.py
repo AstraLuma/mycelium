@@ -56,6 +56,9 @@ class FunctionCheck:
 
 
 def check(func):
+    """
+    Flags a function as a check
+    """
     return type(yaml.YAMLObject)(
         func.__name__,
         (FunctionCheck, yaml.YAMLObject),
@@ -69,12 +72,24 @@ def check(func):
 
 
 def load(root, stream):
+    """
+    Loads checks from a config file.
+
+    Config files are yaml, in the form of:
+
+        - Host name:
+          - check name: !check args
+          - !check args
+    """
     # Checks are loaded implicitly when root is created
     raw_data = yaml.load(stream)
     data = collections.OrderedDict()
     for item in raw_data:
         (hostname, rawchecks), = item.items()
         hostchecks = collections.OrderedDict()
+        if not rawchecks:
+            data[hostname] = {}
+            continue
         for check in rawchecks:
             if isinstance(check, dict):
                 (checkname, obj), = check.items()

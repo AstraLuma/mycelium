@@ -1,4 +1,61 @@
+- Refuge Uplink:
+
 - Toaster:
-  - Ping: !ping toaster
+  - !ping toaster
+  - SSH: !tcp
+      host: toaster
+      port: 22
+
 - Breadbox:
-  - Ping: !ping breadbox
+  - !ping breadbox
+  - SSH: !tcp
+      host: breadbox
+      port: 22
+
+- Mulholland:
+  - !ping mulholland
+  - SSH: !tcp
+      host: mulholland
+      port: 22
+
+# - Petey:
+#   - !ping petey
+
+- Master:
+  - !ping master.doyoueven.click
+  - SSH: !tcp
+      host: master.doyoueven.click
+      port: 22
+  - Salt API: !tcp
+      host: master.doyoueven.click
+      port: 8000
+  - SpiroFS: !tcp
+      host: master.doyoueven.click
+      port: 4510
+
+- Static Host:
+  - !ping statichost-01.doyoueven.click
+  - SSH: !tcp
+      host: statichost-01.doyoueven.click
+      port: 22
+  - HTTP: !tcp
+      host: statichost-01.doyoueven.click
+      port: 80
+  - HTTPS: !tcp
+      host: statichost-01.doyoueven.click
+      port: 443
+
+- Brigid:
+  - !ping brigid.doyoueven.click
+  - SSH: !tcp
+      host: toaster
+      port: 22
+  - HTTP: !tcp
+      host: brigid.doyoueven.click
+      port: 80
+  - HTTPS: !tcp
+      host: brigid.doyoueven.click
+      port: 443
+
+- DYEC Sites:
+- MNN Sites:
