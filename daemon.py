@@ -22,7 +22,7 @@ CONFIG_FILE = __pfile__.parent / 'mycelium.yaml'
 
 logging.basicConfig(
     level='DEBUG',
-    handlers=[journal.JournaldLogHandler()] if 'JOURNAL_STREAM' in os.environ else None,
+    # handlers=[journal.JournaldLogHandler()] if 'JOURNAL_STREAM' in os.environ else None,
 )
 
 LOG = logging.getLogger()
