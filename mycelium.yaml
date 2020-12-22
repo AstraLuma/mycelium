@@ -8,9 +8,9 @@
 
 - Breadbox:
   - !ping breadbox
-  - SSH: !tcp
+  - HTTP: !tcp
       host: breadbox
-      port: 22
+      port: 5000
 
 - Mulholland:
   - !ping mulholland
