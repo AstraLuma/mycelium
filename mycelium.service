@@ -2,7 +2,7 @@
 Description=A plant-based monitoring system
 
 [Service]
-Type=simple
+Type=notify
 Restart=on-failure
 ExecStart=/home/pi/mycelium/daemon.py
 

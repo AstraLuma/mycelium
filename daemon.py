@@ -40,7 +40,7 @@ COLORS = {
 
 @contextlib.contextmanager
 def systemd_daemon():
-    if 'NOTIFY_SOCKET' is os.environ:
+    if 'NOTIFY_SOCKET' in os.environ:
         notify(Notification.READY)
         try:
             yield
