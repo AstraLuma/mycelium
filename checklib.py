@@ -82,7 +82,7 @@ def load(root, stream):
           - !check args
     """
     # Checks are loaded implicitly when root is created
-    raw_data = yaml.load(stream, loader=yaml.Loader)
+    raw_data = yaml.load(stream, Loader=yaml.Loader)
     data = collections.OrderedDict()
     for item in raw_data:
         (hostname, rawchecks), = item.items()
