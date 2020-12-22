@@ -10,6 +10,8 @@ adafruit-circuitpython-pypixelbuf==2.2.0  # via adafruit-circuitpython-neopixel
 adafruit-platformdetect==2.23.0  # via adafruit-blinka
 adafruit-pureio==1.1.8    # via adafruit-blinka
 cysystemd==1.4.5          # via -r requirements.in
+jinja2==2.11.2            # via -r requirements.in
+markupsafe==1.1.1         # via jinja2
 pyftdi==0.52.0            # via adafruit-blinka
 pyserial==3.5             # via pyftdi
 pyusb==1.1.0              # via pyftdi
