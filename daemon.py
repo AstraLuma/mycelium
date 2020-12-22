@@ -1,13 +1,20 @@
 #!/usr/bin/env python3
-import enum
 import logging
+import pathlib
 import time
 
 import board
 import neopixel
 
+from checklib import States, load
+import checks
+
 POTS = 12
 PIXELS_PER_POT = 12
+
+__pfile__ = pathlib.Path(__file__).absolute()
+
+CONFIG_FILE = __pfile__.parent / 'mycelium.yaml'
 
 logging.basicConfig(
     level='DEBUG',
@@ -15,13 +22,6 @@ logging.basicConfig(
 
 
 pixels = neopixel.NeoPixel(board.D18, POTS * PIXELS_PER_POT, brightness=0.3, auto_write=False)
-
-
-class States(enum.Enum):
-    BLANK = enum.auto()
-    GOOD = enum.auto()
-    BAD = enum.auto()
-    WEIRD = enum.auto()
 
 
 COLORS = {
@@ -37,23 +37,14 @@ def xmas():
         pixels[i] = COLORS[States.GOOD if i % 2 else States.BAD]
 
 
+with open(CONFIG_FILE) as c:
+    config = load(checks, c)
+
+print(config)
+
 while True:
     pixels.fill(COLORS[States.BLANK])
-    pixels.show()
-    time.sleep(1)
-
-    pixels.fill(COLORS[States.GOOD])
-    pixels.show()
-    time.sleep(1)
-
-    pixels.fill(COLORS[States.BAD])
-    pixels.show()
-    time.sleep(1)
-
-    pixels.fill(COLORS[States.WEIRD])
-    pixels.show()
-    time.sleep(1)
-
-    xmas()
+    for i, check in enumerate((c for cs in config.values() for c in cs.values())):
+        pixels[i] = COLORS[check()]
     pixels.show()
     time.sleep(1)

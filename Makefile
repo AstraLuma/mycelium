@@ -7,5 +7,6 @@ upgrade:
 
 .PHONY: upload
 upload:
+	rm -rf __pycache__
 	rsync -av * pi@plants:mycelium
 	ssh pi@plants sudo mycelium/install.sh
