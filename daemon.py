@@ -47,4 +47,4 @@ while True:
     for i, check in enumerate((c for cs in config.values() for c in cs.values())):
         pixels[i] = COLORS[check()]
     pixels.show()
-    time.sleep(1)
+    time.sleep(60)

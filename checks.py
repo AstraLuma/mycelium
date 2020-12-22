@@ -1,5 +1,6 @@
 import socket
 import subprocess
+import urllib.request
 
 from checklib import check
 
@@ -19,3 +20,12 @@ def tcp(host, port, timeout=10):
     """
     s = socket.create_connection((host, port), timeout=timeout)
     s.close()
+
+
+@check
+def url(address):
+    """
+    Is this URL available?
+    """
+    with urllib.request.urlopen(address):
+        pass

@@ -58,4 +58,12 @@
       port: 443
 
 - DYEC Sites:
+  - ivyleav.es: !url https://ivyleav.es/
+  - lumami.biz: !url https://lumami.biz/
+  - astraluma.com: !url https://astraluma.com/
+  - astro73.com: !url https://astro73.com/
+  - qwertyuiop: !url https://qwertyuiop.ninja/
+
 - MNN Sites:
+  - Site: !url https://mutualnudes.net/
+  - Wiki: !url https//mnn.wiki/
