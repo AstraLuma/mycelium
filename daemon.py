@@ -25,7 +25,7 @@ pixels = neopixel.NeoPixel(board.D18, POTS * PIXELS_PER_POT, brightness=0.3, aut
 
 
 COLORS = {
-    States.BLANK: (64, 64, 64),
+    States.BLANK: (16, 16, 16),
     States.GOOD: (0, 255, 0),
     States.BAD: (255, 0, 0),
     States.WEIRD: (255, 0, 255),
