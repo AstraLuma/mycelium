@@ -1,0 +1,10 @@
+[Unit]
+Description=A plant-based monitoring system
+
+[Service]
+Type=simple
+Restart=on-failure
+ExecStart=/home/pi/mycelium/daemon.py
+
+[Install]
+WantedBy=multi-user.target
