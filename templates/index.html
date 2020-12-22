@@ -3,7 +3,7 @@
   <!-- if your site isn't in English, change lang="en" above accordingly. -->
 
   <head>
-    <title>decent website</title>
+    <title>Mycelium</title>
     <meta charset="utf-8">
     <!-- this, basically, tells the browser that you have a responsive website. -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,9 +21,9 @@ body {
   line-height: 1.5;
 }
 
-main {
-  margin: 0 auto;
-  max-width: 1000px;
+section {
+  display: inline-block;
+  width: 40em;
 }
 
 a { color: #1663bb; }
@@ -31,23 +31,15 @@ a:hover, a:focus { color: #0f437e; }
     </style>
   </head>
   <body>
-    <main>
-      <h1><a href="/">decent website</a></h1>
-
-      <p>look at this decent website!</p>
-      <p>features:</p>
-
+    {% for hostname, checks in results.items() %}
+    <section>
+      <h2>{{hostname}}</h2>
       <ul>
-        <li>looks decent</li>
-        <li>adjusts to browser size</li>
-        <li>has a maximum width, for readability</li>
-        <li>usable on mobile devices</li>
-        <li>only 20 lines of CSS</li>
+        {% for item in checks %}
+        <li>{{item}}</li>
+        {% endfor %}
       </ul>
-
-      <p>want to use this as a starting point for your website? <a href="https://github.com/duckinator/decent-website/generate">use this page as a template.</a></p>
-
-      <p><a href="https://github.com/duckinator/decent-website">source available on GitHub.</a></p>
-    </main>
+    </section>
+    {% endfor %}
   </body>
 </html>
