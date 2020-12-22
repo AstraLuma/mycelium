@@ -3,7 +3,7 @@ requirements.txt: requirements.in
 
 .PHONY: upgrade
 upgrade:
-	pip-compile -U requirements.in
+	pip-compile -U -o requirements.txt requirements.in
 
 .PHONY: upload
 upload: requirements.txt

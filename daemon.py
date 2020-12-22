@@ -20,6 +20,8 @@ __pfile__ = pathlib.Path(__file__).absolute()
 
 CONFIG_FILE = __pfile__.parent / 'mycelium.yaml'
 
+HTTP_DIR = pathlib.Path('/run/www')
+
 logging.basicConfig(
     level='DEBUG',
     # handlers=[journal.JournaldLogHandler()] if 'JOURNAL_STREAM' in os.environ else None,
@@ -38,11 +40,14 @@ COLORS = {
 
 @contextlib.contextmanager
 def systemd_daemon():
-    notify(Notification.READY)
-    try:
+    if 'NOTIFY_SOCKET' is os.environ:
+        notify(Notification.READY)
+        try:
+            yield
+        finally:
+            notify(Notification.STOPPING)
+    else:
         yield
-    finally:
-        notify(Notification.STOPPING)
 
 
 LOG.debug("environ: %r", os.environ)
